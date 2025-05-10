@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    /* Global Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    
+    .footer-logo {
+      width: 233px;
+      height: 47px;
+      object-fit: contain;
+      margin-bottom: 1rem;
+      max-width: 100%;
+    }
+    
+    /* Top Info - Fixed white text */
+    #et-info {
+      background-color: #4b0c63;
+      color: #fff;
+      padding: 0.5rem 2rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    #et-info span, 
+    #et-info a {
+      padding: 0.3rem 0;
+      color: #fff !important;
+      text-decoration: none;
+    }
+    
+    #et-info a:hover {
+      color: #f1c40f !important;
+    }
+    
+    #et-info i {
+      margin-right: 5px;
+    }
+    
+    /* Navbar */
+    .navbar {
+      background-color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      position: relative;
+    }
+    
+    .logo-img {
+      height: 47px;
+      max-width: 100%;
+    }
+    
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 1.5rem;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: #4b0c63;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    
+    .nav-links a.active {
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    
+    /* Hamburger menu for mobile */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: #4b0c63;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+      background-color: #4b0c63;
+      color: white;
+      padding: 3rem 2rem;
+    }
+    
+    .contact-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .contact-left,
+    .contact-right {
+      flex: 1;
+      min-width: 300px;
+    }
+    
+    .contact-left h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .contact-left p {
+      margin-bottom: 2rem;
+    }
+    
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border: none;
+      font-size: 1rem;
+      border-radius: 4px;
+    }
+    
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    
+    .inline-fields {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .inline-fields input {
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .captcha-submit {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .captcha {
+      width: 60px;
+      text-align: center;
+    }
+    
+    .contact-form button {
+      background-color: #f1c40f;
+      color: #333;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+    }
+    
+    .contact-form button:hover {
+      background-color: #e6b800;
+    }
+    
+    /* Contact Right */
+    .contact-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    .contact-right h3 {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .contact-right p {
+      margin-bottom: 1rem;
+      color: #ccc;
+      padding-left: 28px; /* Match icon width + gap */
+    }
+    
+    .social-icons {
+      margin-top: 1rem;
+    }
+    
+    .social-icons a {
+      color: white;
+      font-size: 1.5rem;
+      margin-right: 1rem;
+      transition: color 0.3s;
+    }
+    
+    .social-icons a:hover {
+      color: #f1c40f;
+    }
+    
+    /* Footer */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 2rem 1rem;
+      margin-top: 0;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: auto;
+      gap: 2rem;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+    }
+    
+    .footer-section h2 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    
+    .footer-section ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-section a:hover {
+      color: #f1c40f;
+    }
+    
+    /* Responsive styles */
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .hamburger {
+        display: block;
+        order: 1;
+      }
+      
+      .logo {
+        order: 2;
+        flex: 1;
+        text-align: center;
+      }
+      
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 1rem 0;
+        order: 3;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-links li {
+        padding: 0.5rem 0;
+      }
+      
+      #et-info {
+        padding: 0.5rem 1rem;
+        justify-content: center;
+        text-align: center;
+        gap: 0.5rem;
+      }
+      
+      .contact-container {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .contact-left, .contact-right {
+        min-width: 100%;
+      }
+      
+      .inline-fields input {
+        min-width: 100%;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+    
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .navbar {
+        padding: 1rem;
+      }
+      
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Bar -->
+  <div id="et-info">
+    <div id="et-info">
+    <span id="et-info-phone">
+      <i class="fas fa-phone-alt"></i> +91 9392732341
+    </span>
+    <a href="mailto:sklassicsedutech@gmail.com">
+      <i class="fas fa-envelope"></i> sklassicsedutech@gmail.com
+    </a>
+  </div>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <div class="logo">
+      <a href="#"><img src="images/Sklassics.png" alt="Sklassics Logo" class="logo-img" /></a>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="workshops.html">Workshops</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="active">Contact Us</a></li>
+      <li><a href="login.html">Login/Signup</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="contact-section">
+    <div class="contact-container">
+      <div class="contact-left">
+        <h1>Contact Us</h1>
+        <p>Please write to us for any queries below</p>
+        <form class="contact-form">
+          <input type="text" placeholder="NAME" required />
+          <div class="inline-fields">
+            <input type="email" placeholder="EMAIL ADDRESS" required />
+            <input type="tel" placeholder="PHONE NUMBER" required />
+          </div>
+          <textarea rows="5" placeholder="MESSAGE" required></textarea>
+          <div class="captcha-submit">
+            <label>3 + 5 =</label>
+            <input type="text" class="captcha" required />
+            <button type="submit">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+      <div class="contact-right">
+        <h3><i class="fas fa-map-marker-alt"></i> Address</h3>
+        <p>Rajiv Enclave, Ranga Reddy,<br>Hyderabad, Telangana, 500062</p>
+        
+        <h3><i class="fas fa-phone-alt"></i> Phone</h3>
+        <p>+91 9392732341</p>
+        
+        <h3><i class="fas fa-envelope"></i> Email</h3>
+        <p>sklassicsedutech@gmail.com</p>
+        
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+        <div class="footer-section">
+            <img src="images/Sklassics-footer-logo.png" alt="Sklassics Logo" class="footer-logo" />
+            <h2>Contact Us</h2>
+            <p>Call: +91 9392732341<br>
+            Email: <a href="mailto:sklassicsedutech@gmail.com">sklassicsedutech@gmail.com</a></p>
+        </div>
+        
+        <div class="footer-section">
+            <h2>Quick Links</h2>
+            <ul>
+                <li><a href="#">Discord</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Instagram</a></li>
+            </ul>
+        </div>
+        
+        <div class="footer-section">
+            <h2>Courses</h2>
+            <ul>
+                <li><a href="#">Data Science</a></li>
+                <li><a href="#">Artificial Intelligence</a></li>
+                <li><a href="#">Data Analytics</a></li>
+                <li><a href="#">Natural Language Processing</a></li>
+                <li><a href="#">Power BI</a></li>
+            </ul>
+        </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+    
+    // Close menu when clicking on a link (for mobile)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        const navLinks = document.getElementById('navLinks');
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

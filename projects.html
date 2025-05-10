@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sklassics - Projects</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Global Styles */
+    :root {
+      --primary-color: #333;
+      --secondary-color: #333;
+      --text-color: #555;
+      --light-gray: #f5f5f5;
+      --white: #ffffff;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background-color: var(--light-gray);
+      color: var(--text-color);
+      line-height: 1.6;
+    }
+    
+    /* Header Styles */
+    header {
+      background-color: var(--white);
+      box-shadow: var(--box-shadow);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+    
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--primary-color);
+      text-decoration: none;
+    }
+    
+    .nav-links {
+      display: flex;
+      list-style: none;
+    }
+    
+    .logo-img {
+      width: 280px;
+      height: auto;
+      max-width: 100%;
+    }
+    
+    .nav-links li {
+      margin-left: 1.5rem;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: var(--secondary-color);
+      font-weight: 500;
+      transition: color 0.3s;
+      font-size: 1rem;
+    }
+    
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--primary-color);
+    }
+    
+    /* Projects Section Styles */
+    .projects-main {
+      padding: 8rem 2rem 2rem;
+      min-height: 100vh;
+    }
+    
+    .projects-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .projects-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    
+    .projects-header h1 {
+      font-size: 2.5rem;
+      color: var(--secondary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .search-box {
+      display: flex;
+      max-width: 600px;
+      margin: 0 auto;
+      width: 100%;
+    }
+    
+    .search-box input {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      border: 1px solid #ddd;
+      border-radius: 4px 0 0 4px;
+      font-size: 1rem;
+      outline: none;
+    }
+    
+    .search-box button {
+      padding: 0 1.5rem;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .search-box button:hover {
+      background-color: #222;
+    }
+    
+    .divider {
+      height: 1px;
+      background-color: #eee;
+      margin: 2rem 0;
+    }
+    
+    .category-tabs {
+      display: flex;
+      overflow-x: auto;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 0.5rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    .category-tab {
+      padding: 0.5rem 1.5rem;
+      background-color: var(--light-gray);
+      border-radius: 20px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.3s;
+      flex-shrink: 0;
+    }
+    
+    .category-tab.active, .category-tab:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+    
+    .project-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .project-card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--box-shadow);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    }
+    
+    .project-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .project-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .project-card:hover .project-img img {
+      transform: scale(1.05);
+    }
+    
+    .project-content {
+      padding: 1.5rem;
+    }
+    
+    .project-content h3 {
+      font-size: 1.3rem;
+      color: var(--secondary-color);
+      margin-bottom: 0.8rem;
+    }
+    
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+      font-size: 0.9rem;
+    }
+    
+    .project-category {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+    
+    .project-description {
+      margin-bottom: 1.5rem;
+      color: #666;
+    }
+    
+    .project-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: var(--primary-color);
+      color: var(--white);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: 500;
+      text-align: center;
+      text-decoration: none;
+      transition: background-color 0.3s;
+      width: 100%;
+    }
+    
+    .project-btn:hover {
+      background-color: #222;
+    }
+    
+    /* Footer Styles */
+    footer {
+      background-color: #2c3e50;
+      color: white;
+      padding: 2rem 0;
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .footer-section {
+      flex: 1;
+      min-width: 200px;
+      margin: 1rem;
+    }
+    
+    .footer-section h2 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section p, .footer-section ul {
+      margin-bottom: 1rem;
+    }
+    
+    .footer-section a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-section a:hover {
+      color: #3498db;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+      padding: 0;
+    }
+    
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 1rem;
+      margin-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    #et-info {
+      background-color: #333;
+      color: white;
+      padding: 0.5rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+    
+    #et-info a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+    }
+    
+    #et-info a:hover {
+      text-decoration: underline;
+    }
+    
+    .footer-logo {
+      width: 200px;
+      height: auto;
+      max-width: 100%;
+      margin-bottom: 1rem;
+    }
+    
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+    }
+    
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .nav-links li {
+        margin-left: 1rem;
+      }
+      
+      .logo-img {
+        width: 200px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 1rem;
+        flex-wrap: wrap;
+      }
+      
+      .menu-toggle {
+        display: block;
+        order: 1;
+      }
+      
+      .logo {
+        order: 2;
+        flex: 1;
+        text-align: center;
+      }
+      
+      .nav-links {
+        display: none;
+        width: 100%;
+        order: 3;
+        flex-direction: column;
+        margin-top: 1rem;
+      }
+      
+      .nav-links.active {
+        display: flex;
+      }
+      
+      .nav-links li {
+        margin: 0.5rem 0;
+        text-align: center;
+      }
+      
+      .projects-main {
+        padding: 7rem 1rem 1rem;
+      }
+      
+      .projects-header h1 {
+        font-size: 2rem;
+      }
+      
+      .project-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+      }
+      
+      .footer-section {
+        margin: 1rem 0;
+      }
+      
+      #et-info {
+        flex-direction: column;
+        text-align: center;
+        padding: 0.5rem;
+      }
+      
+      #et-info span, #et-info a {
+        margin: 0.3rem 0;
+        display: block;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .projects-header h1 {
+        font-size: 1.8rem;
+      }
+      
+      .logo-img {
+        width: 180px;
+      }
+      
+      .project-content {
+        padding: 1rem;
+      }
+      
+      .project-content h3 {
+        font-size: 1.1rem;
+      }
+      
+      .project-description {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div id="et-info">
+      <div id="et-info">
+      <span id="et-info-phone">
+        <i class="fas fa-phone-alt"></i> +91 9392732341
+      </span>
+      <a href="mailto:sklassicsedutech@gmail.com">
+        <i class="fas fa-envelope"></i> sklassicsedutech@gmail.com
+      </a>
+    </div>
+    </div>
+    
+    <nav class="navbar">
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="logo">
+        <a href="#"><img src="images/Sklassics.png" alt="Sklassics" class="logo-img"></a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="courses.html">Courses</a></li>
+        <li><a href="workshops.html">Workshops</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="projects.html" class="active">Projects</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html">Login/Signup</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Projects Main Content -->
+  <main class="projects-main">
+    <div class="projects-container">
+      <div class="projects-header">
+        <h1>Our Projects</h1>
+        <div class="search-box">
+          <input type="text" placeholder="Search projects...">
+          <button><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="project-cards">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Customer Segmentation">
+          </div>
+          <div class="project-content">
+            <h3>Customer Segmentation Analysis</h3>
+            <div class="project-meta">
+              <span class="project-category">Data Science</span>
+              <span>2023</span>
+            </div>
+            <p class="project-description">
+              Advanced customer segmentation using clustering algorithms to identify distinct customer groups for targeted marketing.
+            </p>
+            <a href="#" class="project-btn">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sentiment Analysis">
+          </div>
+          <div class="project-content">
+            <h3>Social Media Sentiment Analysis</h3>
+            <div class="project-meta">
+              <span class="project-category">Natural Language Processing</span>
+              <span>2023</span>
+            </div>
+            <p class="project-description">
+              Real-time sentiment analysis tool for social media monitoring using NLP and machine learning techniques.
+            </p>
+            <a href="#" class="project-btn">View Project</a>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card">
+          <div class="project-img">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chatbot">
+          </div>
+          <div class="project-content">
+            <h3>AI-Powered Customer Support Chatbot</h3>
+            <div class="project-meta">
+              <span class="project-category">Natural Language Processing</span>
+              <span>2023</span>
+            </div>
+            <p class="project-description">
+              Context-aware chatbot for customer service with multi-language support and sentiment detection.
+            </p>
+            <a href="#" class="project-btn">View Project</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <img src="images/Sklassics-footer-logo.png" alt="Sklassics Logo" class="footer-logo" />
+        <h2>Contact Us</h2>
+        <p>Call: +91 9392732341<br>
+        Email: <a href="mailto:sklassicsedutech@gmail.com">sklassicsedutech@gmail.com</a></p>
+      </div>
+      
+      <div class="footer-section">
+        <h2>Quick Links</h2>
+        <ul>
+          <li><a href="#">Discord</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-section">
+        <h2>Courses</h2>
+        <ul>
+          <li><a href="#">Data Science</a></li>
+          <li><a href="#">Artificial Intelligence</a></li>
+          <li><a href="#">Data Analytics</a></li>
+          <li><a href="#">Natural Language Processing</a></li>
+          <li><a href="#">Power BI</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.querySelector('.menu-toggle').addEventListener('click', function() {
+      document.querySelector('.nav-links').classList.toggle('active');
+    });
+
+    // Tab functionality
+    document.querySelectorAll('.category-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelector('.category-tab.active').classList.remove('active');
+        tab.classList.add('active');
+        // Filter projects based on category
+        // This would be implemented with actual filtering logic
+      });
+    });
+  </script>
+</body>
+</html>
