@@ -69,6 +69,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 5%;
+      position: relative;
     }
     
     .logo-img {
@@ -79,6 +80,7 @@
     .nav-links {
       display: flex;
       list-style: none;
+      transition: all 0.3s ease;
     }
     
     .nav-links li {
@@ -89,6 +91,19 @@
       text-decoration: none;
       color: var(--secondary-color);
       font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .nav-links a:hover {
+      color: yellowgreen;
+    }
+    
+    /* Mobile Menu Button */
+    .menu-btn {
+      display: none;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: var(--primary-color);
     }
     
     /* Hero Section */
@@ -509,25 +524,40 @@
       .section-title {
         font-size: 1.8rem;
       }
+      
+      /* Mobile Navigation */
+      .menu-btn {
+        display: block;
+      }
+      
+      .nav-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+      }
+      
+      .nav-links.active {
+        max-height: 500px;
+        opacity: 1;
+      }
+      
+      .nav-links li {
+        margin: 10px 0;
+      }
     }
     
     @media (max-width: 480px) {
       .features {
         grid-template-columns: 1fr;
-      }
-      
-      .navbar {
-        flex-direction: column;
-      }
-      
-      .nav-links {
-        margin-top: 20px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-      
-      .nav-links li {
-        margin: 0.5rem;
       }
       
       #et-info {
@@ -542,6 +572,14 @@
       
       .section-title {
         font-size: 1.6rem;
+      }
+      
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      
+      .hero p {
+        font-size: 1rem;
       }
     }
   </style>
@@ -563,6 +601,10 @@
     <nav class="navbar">
       <div class="logo">
         <a href="#"><img src="images/Sklassics.png" alt="Sklassics" class="logo-img"></a>
+      </div>
+      
+      <div class="menu-btn" id="menuBtn">
+        <i class="fas fa-bars"></i>
       </div>
       
       <ul class="nav-links" id="navLinks">
@@ -751,10 +793,43 @@
       </div>
     </div>
     
-    
+    <div class="copyright">
+      <p>&copy; 2023 Sklassics. All Rights Reserved.</p>
+    </div>
   </footer>
 
   <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    
+    menuBtn.addEventListener('click', function() {
+      navLinks.classList.toggle('active');
+      
+      // Change icon between bars and times
+      const icon = menuBtn.querySelector('i');
+      if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+    
+    // Close mobile menu when clicking on a link
+    const navItems = document.querySelectorAll('.nav-links a');
+    navItems.forEach(item => {
+      item.addEventListener('click', function() {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+          const icon = menuBtn.querySelector('i');
+          icon.classList.remove('fa-times');
+          icon.classList.add('fa-bars');
+        }
+      });
+    });
+
     // Simple slider functionality
     const sliderControls = document.querySelectorAll('.slider-control');
     const heroSection = document.querySelector('.hero');
