@@ -14,16 +14,25 @@
       color: #333;
     }
 
-    /* Top contact info */
+    /* Top contact info - UPDATED */
     #et-info {
       background-color: #333;
       color: white;
-      padding: 10px 20px;
+      padding: 8px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-size: 0.95rem;
-      flex-wrap: wrap;
+      font-size: 0.9rem;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    #et-info span, 
+    #et-info a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
 
     #et-info a {
@@ -35,47 +44,6 @@
     #et-info a:hover {
       text-decoration: underline;
     }
-    /* In your CSS, modify the #et-info styles */
-#et-info {
-  background-color: #333;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.95rem;
-  flex-wrap: nowrap; /* Prevent wrapping */
-  white-space: nowrap; /* Prevent text wrapping */
-  overflow: hidden; /* Hide overflow if necessary */
-}
-
-/* Add this media query to adjust for small screens */
-@media (max-width: 768px) {
-  #et-info {
-    padding: 8px 15px;
-    font-size: 0.85rem; /* Slightly smaller font */
-    gap: 15px; /* Space between items */
-  }
-  
-  /* Optional: make icons smaller on mobile */
-  #et-info i {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #et-info {
-    font-size: 0.8rem; /* Even smaller font for very small screens */
-    gap: 10px;
-    padding: 6px 10px;
-  }
-  
-  /* You could also hide icons on very small screens if needed */
-  /* #et-info i {
-    display: none;
-  } */
-}
-    
 
     /* Navbar */
     .navbar {
@@ -97,9 +65,11 @@
       height: auto;
       object-fit: contain;
     }
- .navbar .logo img {
+    
+    .navbar .logo img {
       height: 40px;
     }
+    
     .nav-links {
       display: flex;
       list-style: none;
@@ -268,15 +238,19 @@
         width: 200px;
       }
 
+      /* UPDATED: Keep top bar in single line on mobile */
       #et-info {
-        flex-direction: column;
-        align-items: flex-start;
+        padding: 6px 10px;
+        font-size: 0.8rem;
         gap: 10px;
-        padding: 10px 15px;
+        flex-direction: row; /* Keep horizontal layout */
+        justify-content: flex-start; /* Align to start */
+        overflow-x: auto; /* Allow horizontal scrolling if needed */
+        white-space: nowrap; /* Prevent wrapping */
       }
-
+      
       #et-info a {
-        margin-left: 0;
+        margin-left: 10px;
       }
 
       .footer-content {
@@ -311,12 +285,21 @@
       h1 {
         font-size: 1.5rem;
       }
+      
+      /* Further adjustments for very small screens */
+      #et-info {
+        font-size: 0.75rem;
+      }
+      
+      #et-info i {
+        font-size: 0.7rem;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Contact Info -->
+  <!-- Top Contact Info - REMOVED DUPLICATE DIV -->
   <div id="et-info">
     <div id="et-info">
     <span id="et-info-phone">
