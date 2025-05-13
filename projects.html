@@ -98,15 +98,19 @@
   flex-wrap: nowrap; /* ← Prevents wrapping */
   white-space: nowrap; /* ← Prevents text breaks */
   overflow-x: auto; /* ← Allows horizontal scrolling if needed */
-  -webkit-overflow-scrolling: touch; /* ← Smooth mobile scrolling */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* ← Smooth mobile scrolling */
 }
-
+#et-info::-webkit-scrollbar {
+  display: none; /* Hide scrollbar in Chrome/Safari */
+}
 #et-info span, 
 #et-info a {
   padding: 0.3rem 0;
   color: #fff !important;
   text-decoration: none;
-  flex-shrink: 0; /* ← Prevents shrinking */
+  flex-shrink: 0;
+  display: inline-block; /* ← Prevents shrinking */
 }
 
     #et-info a {
@@ -116,9 +120,9 @@
       transition: color 0.3s;
     }
 
-    #et-info a:hover {
-      color: var(--secondary-color);
-    }
+   #et-info a:hover {
+  color: #f1c40f !important;
+}
 
     #et-info i {
       margin-right: 5px;
