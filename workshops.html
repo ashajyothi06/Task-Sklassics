@@ -1,506 +1,318 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sklassics - Workshops</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sklassics | Workshops</title>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* Global Styles */
-    :root {
-      --primary-color: #333;
-      --secondary-color: #333;
-      --text-color: #555;
-      --light-gray: #f5f5f5;
-      --white: #ffffff;
-      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
+
     body {
-      background-color: var(--light-gray);
-      color: var(--text-color);
-      line-height: 1.6;
+      font-family: 'Open Sans', sans-serif;
+      background: #fff;
+      color: #333;
     }
-    
-    /* Header Styles */
-    header {
-      background-color: var(--white);
-      box-shadow: var(--box-shadow);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 1000;
+
+    .topbar {
+      background-color: #4b0d68;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      flex-wrap: wrap;
     }
-    
+
+    .topbar a {
+      color: white;
+      text-decoration: none;
+    }
+
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+      padding: 15px 20px;
+      border-bottom: 1px solid #ddd;
+      flex-wrap: wrap;
     }
-    
-    .logo a {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: var(--primary-color);
-      text-decoration: none;
+
+    .navbar .logo img {
+      height: 40px;
     }
-    
-    .logo-img {
-      max-width: 100%;
-      height: auto;
-      max-height: 69px;
-      object-fit: contain;
+
+    .hamburger {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
     }
-    
+
     .nav-links {
       display: flex;
       list-style: none;
+      gap: 15px;
     }
-    
-    .nav-links li {
-      margin-left: 2rem;
-    }
-    
+
     .nav-links a {
       text-decoration: none;
-      color: var(--secondary-color);
-      font-weight: 500;
-      transition: color 0.3s;
-      white-space: nowrap;
+      color: #333;
+      font-weight: 600;
+      padding: 10px;
     }
-    
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--primary-color);
+
+    .nav-links a.active {
+      color: #6c1e8e;
+      border-bottom: 2px solid #6c1e8e;
     }
-    
-    /* Mobile Menu */
-    .menu-toggle {
-      display: none;
-      cursor: pointer;
-      font-size: 1.5rem;
+
+    .page-title {
+      text-align: center;
+      margin: 40px 0 20px;
+      font-size: 32px;
+      font-weight: bold;
     }
-    
-    /* Hero Section */
-    .workshop-hero {
-      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-      background-size: cover;
-      background-position: center;
-      height: 50vh;
+
+    .search-bar {
       display: flex;
-      align-items: center;
-      text-align: center;
-      color: white;
-      padding-top: 80px;
-      margin-top: 80px;
+      justify-content: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
     }
-    
-    .hero-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 0 2rem;
+
+    .search-bar input {
+      width: 700px;
+      max-width: 90%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-right: none;
+      border-radius: 5px 0 0 5px;
     }
-    
-    .hero-content h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+
+    .search-bar button {
+      padding: 10px 20px;
+      background-color: #ddd;
+      border: 1px solid #ccc;
+      border-left: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
     }
-    
-    .hero-content p {
-      font-size: 1.2rem;
-      margin-bottom: 2rem;
+
+    #et-info {
+      background-color: #4b0c63;
+      color: #fff;
+      padding: 0.5rem 2rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
     }
-    
-    /* Workshops Section */
-    .workshops {
-      padding: 5rem 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+
+    #et-info span,
+    #et-info a {
+      padding: 0.3rem 0;
+      color: #fff !important;
+      text-decoration: none;
     }
-    
-    .section-header {
-      text-align: center;
-      margin-bottom: 3rem;
+
+    #et-info a:hover {
+      color: #f1c40f !important;
     }
-    
-    .section-header h2 {
-      font-size: 2.2rem;
-      color: var(--primary-color);
-      margin-bottom: 1rem;
+
+    #et-info i {
+      margin-right: 5px;
     }
-    
-    .workshops-grid {
+
+    .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
+      gap: 30px;
+      padding: 0 20px 60px;
+      max-width: 1100px;
+      margin: auto;
     }
-    
-    .workshop-card {
-      background: var(--white);
-      border-radius: 8px;
+
+    .card {
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       overflow: hidden;
-      box-shadow: var(--box-shadow);
-      transition: transform 0.3s, box-shadow 0.3s;
+      background: #f9f9f9;
+      text-align: center;
     }
-    
-    .workshop-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-    }
-    
-    .workshop-img {
-      height: 200px;
-      overflow: hidden;
-    }
-    
-    .workshop-img img {
+
+    .card img {
       width: 100%;
-      height: 100%;
+      height: 300px;
       object-fit: cover;
-      transition: transform 0.5s;
     }
-    
-    .workshop-card:hover .workshop-img img {
-      transform: scale(1.05);
+
+    .card-body {
+      padding: 15px;
     }
-    
-    .workshop-content {
-      padding: 1.5rem;
+
+    .card h3 {
+      font-size: 18px;
+      margin-bottom: 10px;
     }
-    
-    .workshop-content h3 {
-      font-size: 1.3rem;
-      color: var(--secondary-color);
-      margin-bottom: 0.8rem;
+
+    .card p {
+      font-size: 15px;
+      color: #555;
     }
-    
-    .workshop-meta {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-      font-size: 0.9rem;
-    }
-    
-    .workshop-date {
-      color: var(--primary-color);
-      font-weight: 600;
-    }
-    
-    .workshop-price {
-      background-color: var(--primary-color);
-      color: white;
-      padding: 0.3rem 0.8rem;
-      border-radius: 4px;
-      font-weight: 600;
-    }
-    
-    .workshop-description {
-      margin-bottom: 1.5rem;
-    }
-    
-    #et-info {
-      background-color: #333;
-      color: white;
-      padding: 0.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.95rem;
-    }
-    
-    #et-info a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1rem;
-    }
-    
-    #et-info a:hover {
-      text-decoration: underline;
-    }
-    
-    .workshop-cta {
-      display: inline-block;
-      padding: 0.6rem 1.5rem;
-      background-color: var(--primary-color);
-      color: var(--white);
-      border-radius: 4px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: background-color 0.3s;
-    }
-    
-    .workshop-cta:hover {
-      background-color: #222;
-    }
-    
-    /* Footer Styles */
+
     footer {
       background-color: #2c3e50;
       color: white;
-      padding: 2rem 0;
+      padding: 2rem 1rem;
+      margin-top: 0;
     }
-    
+
     .footer-content {
       display: flex;
       justify-content: space-around;
       flex-wrap: wrap;
-      width: 80%;
       max-width: 1200px;
-      margin: 0 auto;
+      margin: auto;
+      gap: 2rem;
     }
-    
+
     .footer-section {
       flex: 1;
-      min-width: 200px;
-      margin: 1rem;
+      min-width: 250px;
     }
-    
+
     .footer-section h2 {
-      color: white;
       margin-bottom: 1rem;
+      font-size: 1.3rem;
     }
-    
-    .footer-section p, .footer-section ul {
-      margin-bottom: 1rem;
+
+    .footer-section ul {
+      list-style-type: none;
+      padding-left: 0;
     }
-    
+
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+
     .footer-section a {
       color: white;
       text-decoration: none;
       transition: color 0.3s;
     }
-    
+
     .footer-section a:hover {
-      color: #3498db;
+      color: #f1c40f;
     }
-    
-    .footer-section ul {
-      list-style: none;
-      padding: 0;
-    }
-    
-    .footer-section li {
-      margin-bottom: 0.5rem;
-    }
-    
-    .copyright {
-      text-align: center;
-      padding-top: 1rem;
-      margin-top: 1rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
+
     .footer-logo {
-      max-width: 100%;
-      height: auto;
-      max-height: 47px;
-      object-fit: contain;
+      height: 50px;
+      width: auto;
       margin-bottom: 1rem;
     }
-    
-    /* Responsive Styles */
-    @media (max-width: 992px) {
-      .navbar {
-        padding: 1rem;
-      }
-      
-      .nav-links li {
-        margin-left: 1rem;
-      }
-      
-      .hero-content h1 {
-        font-size: 2.5rem;
-      }
-    }
-    
+
     @media (max-width: 768px) {
-      .menu-toggle {
+      .hamburger {
         display: block;
       }
-      
+
       .nav-links {
-        position: fixed;
-        top: 140px;
-        left: -100%;
+        flex-direction: column;
         width: 100%;
-        height: calc(100vh - 140px);
-        background-color: var(--white);
+        display: none;
+        padding: 10px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li {
+        width: 100%;
+        text-align: left;
+      }
+
+      .search-bar {
         flex-direction: column;
         align-items: center;
-        padding: 2rem 0;
-        transition: left 0.3s ease;
       }
-      
-      .nav-links.active {
-        left: 0;
+
+      .search-bar input,
+      .search-bar button {
+        width: 90%;
+        margin: 5px 0;
+        border-radius: 5px;
       }
-      
-      .nav-links li {
-        margin: 1rem 0;
-      }
-      
-      .workshop-hero {
-        height: 40vh;
-        padding-top: 140px;
-        margin-top: 140px;
-      }
-      
-      .hero-content h1 {
-        font-size: 2.2rem;
-      }
-      
-      .hero-content p {
-        font-size: 1rem;
-      }
-      
-      #et-info {
-        flex-direction: column;
-        text-align: center;
-        padding: 0.5rem;
-      }
-      
-      #et-info a {
-        margin: 0.5rem 0;
-      }
-      
+
       .footer-content {
         flex-direction: column;
         align-items: center;
+      }
+
+      .footer-section {
         text-align: center;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .hero-content h1 {
-        font-size: 1.8rem;
-      }
-      
-      .section-header h2 {
-        font-size: 1.8rem;
-      }
-      
-      .workshops {
-        padding: 3rem 1rem;
-      }
-      
-      .workshop-hero {
-        height: 35vh;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header>
+
+  <div id="et-info">
     <div id="et-info">
-      <div id="et-info">
-      <span id="et-info-phone">
-        <i class="fas fa-phone-alt"></i> +91 9392732341
-      </span>
-      <a href="mailto:sklassicsedutech@gmail.com">
-        <i class="fas fa-envelope"></i> sklassicsedutech@gmail.com
-      </a>
-    </div>
-    </div>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="#"><img src="images/Sklassics.png" alt="Sklassics" class="logo-img"></a>  
-      </div>
-      <div class="menu-toggle">
-        <i class="fas fa-bars"></i>
-      </div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Us</a></li>
-        <li><a href="courses.html">Courses</a></li>
-        <li><a href="workshops.html" class="active">Workshops</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="login.html">Login/Signup</a></li>
-      </ul>
-    </nav>
-  </header>
+    <span><i class="fas fa-phone-alt"></i> +91 9392732341</span>
+    <a href="mailto:sklassicsedutech@gmail.com"><i class="fas fa-envelope"></i> sklassicsedutech@gmail.com</a>
+  </div>
+  </div>
 
-  <!-- Hero Section -->
-  <section class="workshop-hero">
-    <div class="hero-content">
-      <h1>Upcoming Workshops</h1>
-      <p>Join our intensive hands-on workshops to gain practical skills in emerging technologies</p>
+  <nav class="navbar">
+    <div class="logo">
+      <a href="#"><img src="images/Sklassics.png" alt="Sklassics Logo" /></a>
     </div>
-  </section>
+    <div class="hamburger" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="workshops.html" class="active">Workshops</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="login.html">Login/Signup</a></li>
+    </ul>
+  </nav>
 
-  <!-- Workshops Section -->
-  <section class="workshops">
-    <div class="section-header">
-      <h2>Our Workshops</h2>
-      <p>Short-term intensive learning experiences with industry experts</p>
-    </div>
-    
-    <div class="workshops-grid">
-      <!-- Workshop 1 -->
-      <div class="workshop-card">
-        <div class="workshop-img">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Data Science Workshop">
-        </div>
-        <div class="workshop-content">
-          <h3>Data Science Fundamentals</h3>
-          <div class="workshop-meta">
-            <span class="workshop-price">₹999</span>
-          </div>
-          <div class="workshop-description">
-            <p>A 2-day intensive workshop covering Python for data analysis, data visualization, and machine learning basics.</p>
-          </div>
-          <a href="#" class="workshop-cta">Register Now</a>
-        </div>
-      </div>
-      
-      <!-- Workshop 2 -->
-      <div class="workshop-card">
-        <div class="workshop-img">
-          <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="AI Workshop">
-        </div>
-        <div class="workshop-content">
-          <h3>AI & ChatGPT Workshop</h3>
-          <div class="workshop-meta">
-            <span class="workshop-price">₹1499</span>
-          </div>
-          <div class="workshop-description">
-            <p>Learn to build AI applications and leverage ChatGPT for business solutions in this hands-on workshop.</p>
-          </div>
-          <a href="#" class="workshop-cta">Register Now</a>
-        </div>
-      </div>
-      
-      <!-- Workshop 3 -->
-      <div class="workshop-card">
-        <div class="workshop-img">
-          <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Python Workshop">
-        </div>
-        <div class="workshop-content">
-          <h3>Python for Beginners</h3>
-          <div class="workshop-meta">
-            <span class="workshop-price">₹799</span>
-          </div>
-          <div class="workshop-description">
-            <p>Master Python programming fundamentals and build your first applications in this weekend workshop.</p>
-          </div>
-          <a href="#" class="workshop-cta">Register Now</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <h2 class="page-title">All Workshops</h2>
 
-  <!-- Footer -->
+  <div class="search-bar">
+    <input type="text" placeholder="Search for workshops">
+    <button>Search</button>
+  </div>
+
+  <div class="grid">
+    <div class="card">
+      <img src="images/power-bi-course.jpg" alt="Power BI Workshop">
+      <div class="card-body">
+        <h3>Power BI Workshop</h3>
+        <p>@499</p>
+      </div>
+    </div>
+    <div class="card">
+      <img src="images/workshop.png" alt="Data Analytics">
+      <div class="card-body">
+        <h3>Workshop 2.0 (ML, DL, PowerBI)</h3>
+        <p>@99</p>
+      </div>
+    </div>
+  </div>
+
   <footer>
     <div class="footer-content">
       <div class="footer-section">
@@ -509,7 +321,6 @@
         <p>Call: +91 9392732341<br>
         Email: <a href="mailto:sklassicsedutech@gmail.com">sklassicsedutech@gmail.com</a></p>
       </div>
-      
       <div class="footer-section">
         <h2>Quick Links</h2>
         <ul>
@@ -518,7 +329,6 @@
           <li><a href="#">Instagram</a></li>
         </ul>
       </div>
-      
       <div class="footer-section">
         <h2>Courses</h2>
         <ul>
@@ -530,17 +340,14 @@
         </ul>
       </div>
     </div>
-    
-   
   </footer>
 
   <script>
-    // Mobile menu toggle
-    document.querySelector('.menu-toggle').addEventListener('click', function() {
-      document.querySelector('.nav-links').classList.toggle('active');
-      this.querySelector('i').classList.toggle('fa-bars');
-      this.querySelector('i').classList.toggle('fa-times');
-    });
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('show');
+    }
   </script>
+
 </body>
 </html>

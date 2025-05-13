@@ -8,27 +8,28 @@
   <style>
     /* Global Styles */
     :root {
-      --primary-color: #333;
-      --secondary-color: #333;
+      --primary-color: #2c3e50;
+      --secondary-color: #3498db;
       --text-color: #555;
       --light-gray: #f5f5f5;
       --white: #ffffff;
       --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --border-radius: 8px;
     }
-    
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
-    
+
     body {
       background-color: var(--light-gray);
       color: var(--text-color);
       line-height: 1.6;
     }
-    
+
     /* Header Styles */
     header {
       background-color: var(--white);
@@ -38,7 +39,7 @@
       top: 0;
       z-index: 1000;
     }
-    
+
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -47,212 +48,196 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-    
+.navbar .logo img {
+      height: 40px;
+    }
     .logo a {
       font-size: 1.8rem;
       font-weight: 700;
       color: var(--primary-color);
       text-decoration: none;
     }
-    
+
     .nav-links {
       display: flex;
       list-style: none;
     }
-    
+
     .logo-img {
-      width: 280px;
-      height: auto;
+      height: 40px;
+      width: auto;
       max-width: 100%;
     }
-    
+
     .nav-links li {
       margin-left: 1.5rem;
     }
-    
+
     .nav-links a {
       text-decoration: none;
-      color: var(--secondary-color);
+      color: var(--primary-color);
       font-weight: 500;
       transition: color 0.3s;
       font-size: 1rem;
     }
-    
-    .nav-links a:hover, .nav-links a.active {
-      color: var(--primary-color);
+
+    .nav-links a:hover, 
+    .nav-links a.active {
+      color: var(--secondary-color);
     }
-    
-    /* Projects Section Styles */
+
+    /* Contact Info Bar */
+    #et-info {
+      background-color: #333;
+      color: white;
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    #et-info a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1rem;
+      transition: color 0.3s;
+    }
+
+    #et-info a:hover {
+      color: var(--secondary-color);
+    }
+
+    #et-info i {
+      margin-right: 5px;
+    }
+
+    /* Main Content */
     .projects-main {
       padding: 8rem 2rem 2rem;
       min-height: 100vh;
     }
-    
-    .projects-container {
+
+    .container {
       max-width: 1200px;
       margin: 0 auto;
       width: 100%;
     }
-    
-    .projects-header {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    
-    .projects-header h1 {
+
+    h1 {
       font-size: 2.5rem;
-      color: var(--secondary-color);
-      margin-bottom: 1rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      text-align: center;
     }
-    
-    .search-box {
+
+    /* Search Bar */
+    .search-bar {
       display: flex;
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 2rem;
       width: 100%;
     }
-    
-    .search-box input {
+
+    .search-bar input {
       flex: 1;
       padding: 0.8rem 1rem;
       border: 1px solid #ddd;
-      border-radius: 4px 0 0 4px;
+      border-radius: var(--border-radius) 0 0 var(--border-radius);
       font-size: 1rem;
       outline: none;
+      transition: border-color 0.3s;
     }
-    
-    .search-box button {
+
+    .search-bar input:focus {
+      border-color: var(--secondary-color);
+    }
+
+    .search-bar button {
       padding: 0 1.5rem;
       background-color: var(--primary-color);
       color: var(--white);
       border: none;
-      border-radius: 0 4px 4px 0;
+      border-radius: 0 var(--border-radius) var(--border-radius) 0;
       cursor: pointer;
       transition: background-color 0.3s;
     }
-    
-    .search-box button:hover {
-      background-color: #222;
+
+    .search-bar button:hover {
+      background-color: var(--secondary-color);
     }
-    
-    .divider {
-      height: 1px;
-      background-color: #eee;
-      margin: 2rem 0;
-    }
-    
-    .category-tabs {
+
+    /* Projects List */
+    .projects-list {
       display: flex;
-      overflow-x: auto;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 0.5rem;
-      -webkit-overflow-scrolling: touch;
-    }
-    
-    .category-tab {
-      padding: 0.5rem 1.5rem;
-      background-color: var(--light-gray);
-      border-radius: 20px;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 0.3s;
-      flex-shrink: 0;
-    }
-    
-    .category-tab.active, .category-tab:hover {
-      background-color: var(--primary-color);
-      color: var(--white);
-    }
-    
-    .project-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      flex-direction: column;
       gap: 2rem;
+      margin-top: 2rem;
     }
-    
+
     .project-card {
-      background: var(--white);
-      border-radius: 8px;
+      background-color: var(--white);
+      border-radius: var(--border-radius);
       overflow: hidden;
       box-shadow: var(--box-shadow);
       transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
     }
-    
+
     .project-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     }
-    
-    .project-img {
-      height: 200px;
+
+    .project-image {
+      height: 350px;
       overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
     }
-    
-    .project-img img {
+
+    .project-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s;
+      /* Removed the transform transition */
     }
-    
-    .project-card:hover .project-img img {
-      transform: scale(1.05);
-    }
-    
-    .project-content {
+
+    .project-info {
       padding: 1.5rem;
     }
-    
-    .project-content h3 {
-      font-size: 1.3rem;
-      color: var(--secondary-color);
+
+    .project-info h3 {
+      font-size: 1.5rem;
+      color: var(--primary-color);
       margin-bottom: 0.8rem;
     }
-    
-    .project-meta {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 1.2rem;
-      font-size: 0.9rem;
-    }
-    
-    .project-category {
-      color: var(--primary-color);
-      font-weight: 600;
-    }
-    
-    .project-description {
-      margin-bottom: 1.5rem;
+
+    .project-info p {
       color: #666;
+      margin-bottom: 1.2rem;
+      font-style: italic;
     }
-    
-    .project-btn {
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      background-color: var(--primary-color);
-      color: var(--white);
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 500;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.3s;
-      width: 100%;
+
+    .price {
+      font-weight: bold;
+      color: #27ae60;
+      font-size: 1.2rem;
+      text-align: right;
     }
-    
-    .project-btn:hover {
-      background-color: #222;
-    }
-    
+
     /* Footer Styles */
     footer {
-      background-color: #2c3e50;
-      color: white;
-      padding: 2rem 0;
+      background-color: var(--primary-color);
+      color: var(--white);
+      padding: 3rem 0 1rem;
     }
-    
+
     .footer-content {
       display: flex;
       justify-content: space-around;
@@ -261,95 +246,85 @@
       max-width: 1200px;
       margin: 0 auto;
     }
-    
+
     .footer-section {
       flex: 1;
-      min-width: 200px;
+      min-width: 250px;
       margin: 1rem;
     }
-    
+
     .footer-section h2 {
-      color: white;
-      margin-bottom: 1rem;
-      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+      position: relative;
+      padding-bottom: 0.5rem;
     }
-    
-    .footer-section p, .footer-section ul {
+
+    .footer-section h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--secondary-color);
+    }
+
+    .footer-logo {
+      width: 200px;
+      height: auto;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-section p, 
+    .footer-section ul {
       margin-bottom: 1rem;
     }
-    
+
     .footer-section a {
-      color: white;
-      text-decoration: none;
+      color: var(--white);
+      text-decoration: none; /* Removed underline */
       transition: color 0.3s;
     }
-    
+
     .footer-section a:hover {
-      color: #3498db;
+      color: var(--secondary-color);
+      text-decoration: none; /* Ensure no underline on hover */
     }
-    
+
     .footer-section ul {
       list-style: none;
       padding: 0;
     }
-    
+
     .footer-section li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.8rem;
     }
-    
+
     .copyright {
       text-align: center;
-      padding-top: 1rem;
-      margin-top: 1rem;
+      padding-top: 1.5rem;
+      margin-top: 2rem;
       border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-    
-    #et-info {
-      background-color: #333;
-      color: white;
-      padding: 0.5rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       font-size: 0.9rem;
-      flex-wrap: wrap;
     }
-    
-    #et-info a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1rem;
-    }
-    
-    #et-info a:hover {
-      text-decoration: underline;
-    }
-    
-    .footer-logo {
-      width: 200px;
-      height: auto;
-      max-width: 100%;
-      margin-bottom: 1rem;
-    }
-    
+
     /* Mobile Menu Toggle */
     .menu-toggle {
       display: none;
       cursor: pointer;
       font-size: 1.5rem;
+      color: var(--primary-color);
     }
-    
+
     /* Responsive Styles */
     @media (max-width: 992px) {
       .nav-links li {
         margin-left: 1rem;
       }
-      
-      .logo-img {
-        width: 200px;
-      }
     }
-    
+
     @media (max-width: 768px) {
       .navbar {
         padding: 1rem;
@@ -373,6 +348,8 @@
         order: 3;
         flex-direction: column;
         margin-top: 1rem;
+        padding: 1rem 0;
+        background-color: var(--white);
       }
       
       .nav-links.active {
@@ -388,55 +365,53 @@
         padding: 7rem 1rem 1rem;
       }
       
-      .projects-header h1 {
+      h1 {
         font-size: 2rem;
       }
       
-      .project-cards {
-        grid-template-columns: 1fr;
-      }
-      
-      .footer-content {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-      
-      .footer-section {
-        margin: 1rem 0;
+      .project-image {
+        height: 300px;
       }
       
       #et-info {
-        flex-direction: column;
+        padding: 0.5rem 1rem;
+        justify-content: center;
         text-align: center;
-        padding: 0.5rem;
       }
       
-      #et-info span, #et-info a {
+      #et-info span, 
+      #et-info a {
         margin: 0.3rem 0;
         display: block;
+        width: 100%;
       }
     }
-    
+
     @media (max-width: 480px) {
-      .projects-header h1 {
+      h1 {
         font-size: 1.8rem;
       }
       
-      .logo-img {
-        width: 180px;
+      .project-info h3 {
+        font-size: 1.3rem;
       }
       
-      .project-content {
-        padding: 1rem;
+      .project-info p {
+        font-size: 0.9rem;
       }
       
-      .project-content h3 {
+      .price {
         font-size: 1.1rem;
       }
       
-      .project-description {
-        font-size: 0.9rem;
+      .footer-section {
+        min-width: 100%;
+        text-align: center;
+      }
+      
+      .footer-section h2::after {
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   </style>
@@ -454,7 +429,7 @@
       </a>
     </div>
     </div>
-    
+
     <nav class="navbar">
       <div class="menu-toggle">
         <i class="fas fa-bars"></i>
@@ -477,69 +452,38 @@
 
   <!-- Projects Main Content -->
   <main class="projects-main">
-    <div class="projects-container">
-      <div class="projects-header">
-        <h1>Our Projects</h1>
-        <div class="search-box">
-          <input type="text" placeholder="Search projects...">
-          <button><i class="fas fa-search"></i></button>
-        </div>
+    <div class="container">
+      <h1>Projects</h1>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <input type="text" placeholder="Search for projects">
+        <button>Search</button>
       </div>
-
-      <div class="divider"></div>
-
-      <div class="project-cards">
+      
+      <!-- Projects List -->
+      <div class="projects-list">
         <!-- Project 1 -->
         <div class="project-card">
-          <div class="project-img">
-            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Customer Segmentation">
+          <div class="project-image">
+            <img src="images/waterquality.png" alt="Water Quality Prediction Project">
           </div>
-          <div class="project-content">
-            <h3>Customer Segmentation Analysis</h3>
-            <div class="project-meta">
-              <span class="project-category">Data Science</span>
-              <span>2023</span>
-            </div>
-            <p class="project-description">
-              Advanced customer segmentation using clustering algorithms to identify distinct customer groups for targeted marketing.
-            </p>
-            <a href="#" class="project-btn">View Project</a>
+          <div class="project-info">
+            <h3>Prediction of water Quality using Machine Learning</h3>
+            
+            <div class="price">Buy for ₹5,000</div>
           </div>
         </div>
-
+        
         <!-- Project 2 -->
         <div class="project-card">
-          <div class="project-img">
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Sentiment Analysis">
+          <div class="project-image">
+            <img src="images/project2.png" alt="Fake News Detection Project">
           </div>
-          <div class="project-content">
-            <h3>Social Media Sentiment Analysis</h3>
-            <div class="project-meta">
-              <span class="project-category">Natural Language Processing</span>
-              <span>2023</span>
-            </div>
-            <p class="project-description">
-              Real-time sentiment analysis tool for social media monitoring using NLP and machine learning techniques.
-            </p>
-            <a href="#" class="project-btn">View Project</a>
-          </div>
-        </div>
-
-        <!-- Project 6 -->
-        <div class="project-card">
-          <div class="project-img">
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Chatbot">
-          </div>
-          <div class="project-content">
-            <h3>AI-Powered Customer Support Chatbot</h3>
-            <div class="project-meta">
-              <span class="project-category">Natural Language Processing</span>
-              <span>2023</span>
-            </div>
-            <p class="project-description">
-              Context-aware chatbot for customer service with multi-language support and sentiment detection.
-            </p>
-            <a href="#" class="project-btn">View Project</a>
+          <div class="project-info">
+            <h3>Prediction of Online News Using Artificial Intelligence</h3>
+            
+            <div class="price">Buy for ₹4,500</div>
           </div>
         </div>
       </div>
@@ -550,12 +494,12 @@
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <img src="images/Sklassics-footer-logo.png" alt="Sklassics Logo" class="footer-logo" />
+        <img src="images/Sklassics-footer-logo.png" alt="Sklassics Logo" class="footer-logo">
         <h2>Contact Us</h2>
-        <p>Call: +91 9392732341<br>
-        Email: <a href="mailto:sklassicsedutech@gmail.com">sklassicsedutech@gmail.com</a></p>
+        <p>+91 9392732341<br>
+        <a href="mailto:sklassicsedutech@gmail.com">sklassicsedutech@gmail.com</a></p>
       </div>
-      
+
       <div class="footer-section">
         <h2>Quick Links</h2>
         <ul>
@@ -576,24 +520,14 @@
         </ul>
       </div>
     </div>
-    
-    
+
+   
   </footer>
 
   <script>
     // Mobile menu toggle
     document.querySelector('.menu-toggle').addEventListener('click', function() {
       document.querySelector('.nav-links').classList.toggle('active');
-    });
-
-    // Tab functionality
-    document.querySelectorAll('.category-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelector('.category-tab.active').classList.remove('active');
-        tab.classList.add('active');
-        // Filter projects based on category
-        // This would be implemented with actual filtering logic
-      });
     });
   </script>
 </body>
