@@ -40,6 +40,8 @@
       flex-wrap: nowrap;
       white-space: nowrap;
       overflow: hidden;
+      text-overflow: ellipsis;
+      gap: 1rem;
     }
 
     #et-info span, 
@@ -49,6 +51,10 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
     }
 
     #et-info a:hover {
@@ -335,11 +341,12 @@
 
     @media (max-width: 480px) {
       #et-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.3rem;
-        padding: 0.5rem 1rem;
-        white-space: normal;
+        gap: 0.5rem;
+        padding: 0.5rem;
+      }
+      
+      #et-info i {
+        font-size: 0.7rem;
       }
       
       .form-box {
@@ -374,7 +381,7 @@
   <header>
     <nav class="navbar">
       <div class="logo">
-        <a href="#"><img src="images/Sklassics.png" alt="Sklassics Logo" class="logo-img" /></a>
+        <a href="#"><img src="images/Sklassics.png" alt="Sklassics Logo" class="logo-img" loading="lazy" /></a>
       </div>
       <button class="menu-toggle" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
@@ -406,11 +413,11 @@
         <div id="login-success" class="success-message"></div>
         <form id="loginForm">
           <label for="login-username">Username or E-mail</label>
-          <input type="text" id="login-username" name="username" required />
+          <input type="text" id="login-username" name="username" required aria-required="true" />
           <div id="login-username-error" class="error-message"></div>
 
           <label for="login-password">Password</label>
-          <input type="password" id="login-password" name="password" required />
+          <input type="password" id="login-password" name="password" required aria-required="true" />
           <div id="login-password-error" class="error-message"></div>
 
           <div>
@@ -435,27 +442,27 @@
         <div id="register-success" class="success-message"></div>
         <form id="registerForm">
           <label for="register-name">Full Name</label>
-          <input type="text" id="register-name" name="name" required />
+          <input type="text" id="register-name" name="name" required aria-required="true" />
           <div id="register-name-error" class="error-message"></div>
 
           <label for="register-email">Email Address</label>
-          <input type="email" id="register-email" name="email" required />
+          <input type="email" id="register-email" name="email" required aria-required="true" />
           <div id="register-email-error" class="error-message"></div>
 
           <label for="register-username">Username</label>
-          <input type="text" id="register-username" name="username" required />
+          <input type="text" id="register-username" name="username" required aria-required="true" />
           <div id="register-username-error" class="error-message"></div>
 
           <label for="register-password">Password</label>
-          <input type="password" id="register-password" name="password" required />
+          <input type="password" id="register-password" name="password" required aria-required="true" />
           <div id="register-password-error" class="error-message"></div>
 
           <label for="register-confirm-password">Confirm Password</label>
-          <input type="password" id="register-confirm-password" name="confirm-password" required />
+          <input type="password" id="register-confirm-password" name="confirm-password" required aria-required="true" />
           <div id="register-confirm-error" class="error-message"></div>
 
           <div>
-            <input type="checkbox" id="terms-agree" required />
+            <input type="checkbox" id="terms-agree" required aria-required="true" />
             <label for="terms-agree">I agree to the <a href="#">Terms and Conditions</a></label>
           </div>
           <div id="terms-error" class="error-message"></div>
@@ -473,7 +480,7 @@
   <footer>
     <div class="footer-content">
       <div class="footer-section">
-        <img src="images/Sklassics-footer-logo.png" alt="Sklassics Logo" class="footer-logo" />
+        <img src="images/Sklassics-footer-logo.png" alt="Sklassics Logo" class="footer-logo" loading="lazy" />
         <h2>Contact Us</h2>
         <p>Call: +91 9392732341<br>
         Email: <a href="mailto:sklassicsedutech@gmail.com">sklassicsedutech@gmail.com</a></p>
