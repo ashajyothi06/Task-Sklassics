@@ -28,36 +28,27 @@
       line-height: 1.6;
     }
 
-    /* ADD THIS NEW VERSION */
-/* ADD THIS NEW VERSION */
-#et-info {
-  background-color: #4b0c63;
-  color: #fff;
-  padding: 0.5rem 2rem;
-  font-size: 0.9rem;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: nowrap; /* ← Prevents wrapping */
-  white-space: nowrap; /* ← Prevents text breaks */
-  overflow-x: auto; /* ← Allows horizontal scrolling if needed */
-  -webkit-overflow-scrolling: touch; /* ← Smooth mobile scrolling */
-}
-
-#et-info span, 
-#et-info a {
-  padding: 0.3rem 0;
-  color: #fff !important;
-  text-decoration: none;
-  flex-shrink: 0; /* ← Prevents shrinking */
-}
-
-
-
-    #et-info a {
-      color: white;
-      text-decoration: none;
-      margin-left: 1rem;
+    /* FIXED TOP INFO BAR */
+    #et-info {
+      background-color: #4b0c63;
+      color: #fff;
+      padding: 0.5rem 2rem;
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: nowrap;
       white-space: nowrap;
+      overflow: hidden;
+    }
+
+    #et-info span, 
+    #et-info a {
+      color: #fff !important;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
     #et-info a:hover {
@@ -307,17 +298,11 @@
     }
 
     @media (max-width: 768px) {
-       #et-info {
-    padding: 0.5rem 1rem; /* Smaller padding on mobile */
-    /* All other properties inherit from the main #et-info rule */
-  }
-  
-  /* Optional: For very small screens */
-  @media (max-width: 480px) {
-    #et-info {
-      font-size: 0.8rem; /* Slightly smaller text */
-    }
-  }
+      #et-info {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
+      }
+      
       .menu-toggle {
         display: block;
       }
@@ -346,20 +331,17 @@
       .button-group button {
         flex: 1 1 100%;
       }
-      
-      #et-info {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-      }
-      
-      #et-info a {
-        margin-left: 0;
-      }
     }
 
     @media (max-width: 480px) {
+      #et-info {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.3rem;
+        padding: 0.5rem 1rem;
+        white-space: normal;
+      }
+      
       .form-box {
         padding: 1rem;
       }
@@ -376,7 +358,7 @@
 </head>
 <body>
 
-  <!-- Top Info -->
+  <!-- Top Info - Fixed single line -->
   <div id="et-info">
     <div id="et-info">
     <span id="et-info-phone">
