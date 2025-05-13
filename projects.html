@@ -87,16 +87,27 @@
     }
 
     /* Contact Info Bar */
-    #et-info {
-      background-color: #333;
-      color: white;
-      padding: 0.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.9rem;
-      flex-wrap: wrap;
-    }
+   /* ADD THIS NEW VERSION */
+#et-info {
+  background-color: #4b0c63;
+  color: #fff;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap; /* ← Prevents wrapping */
+  white-space: nowrap; /* ← Prevents text breaks */
+  overflow-x: auto; /* ← Allows horizontal scrolling if needed */
+  -webkit-overflow-scrolling: touch; /* ← Smooth mobile scrolling */
+}
+
+#et-info span, 
+#et-info a {
+  padding: 0.3rem 0;
+  color: #fff !important;
+  text-decoration: none;
+  flex-shrink: 0; /* ← Prevents shrinking */
+}
 
     #et-info a {
       color: white;
@@ -326,6 +337,17 @@
     }
 
     @media (max-width: 768px) {
+       #et-info {
+    padding: 0.5rem 1rem; /* Smaller padding on mobile */
+    /* All other properties inherit from the main #et-info rule */
+  }
+  
+  /* Optional: For very small screens */
+  @media (max-width: 480px) {
+    #et-info {
+      font-size: 0.8rem; /* Slightly smaller text */
+    }
+  }
       .navbar {
         padding: 1rem;
         flex-wrap: wrap;
