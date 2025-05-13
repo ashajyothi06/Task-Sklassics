@@ -433,7 +433,33 @@
     .submit-btn:hover {
       background-color: #222;
     }
-    
+    /* In your CSS, modify the #et-info styles */
+#et-info {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: nowrap; /* Prevent wrapping */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow if necessary */
+}
+
+/* Add this media query to adjust for small screens */
+@media (max-width: 480px) {
+  #et-info {
+    padding: 0.5rem 1rem;
+    justify-content: space-around; /* Better spacing on small screens */
+    gap: 1rem; /* Space between items */
+    font-size: 0.8rem; /* Slightly smaller font if needed */
+  }
+  
+  /* Optional: make icons smaller on mobile */
+  #et-info i {
+    font-size: 0.8rem;
+  }
+}
     /* Footer */
     footer {
       background-color: #2c3e50;
@@ -793,9 +819,7 @@
       </div>
     </div>
     
-    <div class="copyright">
-      <p>&copy; 2023 Sklassics. All Rights Reserved.</p>
-    </div>
+   
   </footer>
 
   <script>
